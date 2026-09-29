@@ -1,0 +1,328 @@
+/* Entrada / Salida: el layout está en base.css */
+
+.buscar-personal{
+    margin-bottom:24px;
+}
+
+.buscar-personal h2{
+    font-size:18px;
+    color:var(--azul-oscuro);
+    margin-bottom:14px;
+}
+
+.buscador{
+    display:flex;
+    gap:12px;
+}
+
+.buscador input{
+    flex:1;
+    height:var(--control-alto);
+    padding:0 14px;
+    border:1px solid var(--borde);
+    border-radius:var(--radio);
+}
+
+.buscador input:focus{
+    outline:none;
+    border-color:var(--azul);
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+
+/* Tres columnas del mismo ancho y alto */
+.panel{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+    margin-bottom:24px;
+}
+
+.info,
+.hora{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.foto{
+    width:96px;
+    height:96px;
+    margin-bottom:16px;
+    border-radius:50%;
+    background:#e9eefc;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.foto i{
+    font-size:42px;
+    color:var(--azul-oscuro);
+}
+
+.info h3{
+    color:var(--azul-oscuro);
+    margin-bottom:16px;
+}
+
+/* Etiqueta a la izquierda y valor a la derecha, en columnas alineadas */
+.datos-empleado{
+    width:100%;
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:10px 16px;
+    text-align:left;
+}
+
+.datos-empleado dt{
+    font-weight:600;
+    color:var(--texto-suave);
+}
+
+.datos-empleado dd{
+    text-align:right;
+    word-break:break-word;
+}
+
+.dato{
+    margin-bottom:24px;
+}
+
+.dato i{
+    font-size:28px;
+    color:var(--azul);
+    margin-bottom:8px;
+}
+
+.dato h2{
+    font-size:30px;
+    color:var(--azul-oscuro);
+    font-variant-numeric:tabular-nums;
+}
+
+.estado-card h4{
+    color:var(--texto-suave);
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+.estado{
+    display:inline-block;
+    min-width:120px;
+    padding:6px 16px;
+    border-radius:999px;
+    background:#f3f4f6;
+    font-weight:700;
+    letter-spacing:.5px;
+}
+
+.estado.adentro{
+    background:#dcfce7;
+    color:#15803d;
+}
+
+.estado.afuera{
+    background:#fee2e2;
+    color:#b91c1c;
+}
+
+.acciones{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+
+.boton{
+    flex:1;
+    min-height:130px;
+    border:none;
+    border-radius:var(--radio-grande);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    color:white;
+    font-size:18px;
+    font-weight:700;
+    box-shadow:var(--sombra);
+    transition:background .2s, transform .2s, opacity .2s;
+}
+
+.boton i{
+    font-size:40px;
+}
+
+.verde{
+    background:#22c55e;
+}
+
+.rojo{
+    background:#ef4444;
+}
+
+.verde:hover:not(:disabled){
+    background:var(--verde);
+    transform:translateY(-3px);
+}
+
+.rojo:hover:not(:disabled){
+    background:var(--rojo);
+    transform:translateY(-3px);
+}
+
+/* Se ve claramente cuál acción no está disponible según el estado */
+.boton:disabled{
+    opacity:.45;
+    box-shadow:none;
+}
+
+.mensaje{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.movimiento-icono{
+    width:56px;
+    height:56px;
+    flex-shrink:0;
+    border-radius:50%;
+    background:#e9eefc;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.movimiento-icono i{
+    font-size:24px;
+    color:var(--azul);
+}
+
+.movimiento-info h3{
+    color:var(--azul-oscuro);
+    margin-bottom:4px;
+}
+
+.movimiento-info p{
+    color:var(--texto-suave);
+}
+
+@media (max-width:1100px){
+    .panel{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .acciones{
+        grid-column:1 / -1;
+        flex-direction:row;
+    }
+}
+
+@media (max-width:640px){
+    .panel{
+        grid-template-columns:1fr;
+    }
+
+    .acciones{
+        flex-direction:column;
+    }
+
+    .buscador{
+        flex-direction:column;
+    }
+
+    .buscador input{
+        flex:none;
+        width:100%;
+    }
+}
+
+/* ---------- Personal dentro de la institución ---------- */
+
+.presentes{
+    margin-top:24px;
+}
+
+.presentes-cabecera{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    margin-bottom:18px;
+}
+
+.presentes-cabecera h2{
+    font-size:18px;
+    color:var(--azul-oscuro);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:4px;
+}
+
+.presentes-cabecera p{
+    color:var(--texto-suave);
+    font-size:14px;
+}
+
+.presentes-cabecera input{
+    width:300px;
+    height:var(--control-alto);
+    padding:0 14px;
+    border:1px solid var(--borde);
+    border-radius:var(--radio);
+}
+
+.presentes-cabecera input:focus{
+    outline:none;
+    border-color:var(--azul);
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+
+.contador{
+    min-width:28px;
+    height:28px;
+    padding:0 8px;
+    border-radius:999px;
+    background:#dcfce7;
+    color:#15803d;
+    font-size:14px;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* La tabla va dentro de la tarjeta: sin sombra doble */
+.presentes .tabla-contenedor{
+    box-shadow:none;
+    border:1px solid #eef1f6;
+}
+
+/* Botón con texto (base.css define td button como icono cuadrado) */
+td .btn-salida{
+    width:auto;
+    padding:0 14px;
+    gap:8px;
+    background:#fee2e2;
+    color:#b91c1c;
+    font-weight:600;
+    white-space:nowrap;
+}
+
+td .btn-salida:disabled{
+    opacity:.5;
+}
+
+@media (max-width:900px){
+    .presentes-cabecera{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .presentes-cabecera input{
+        width:100%;
+    }
+}

@@ -1,0 +1,99 @@
+/* Reportes: el layout está en base.css */
+
+.fecha{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 18px;
+    background:var(--superficie);
+    border-radius:var(--radio);
+    box-shadow:var(--sombra);
+    font-weight:600;
+    color:var(--azul-oscuro);
+    white-space:nowrap;
+}
+
+.fecha span{
+    display:inline-block;
+}
+
+.fecha span::first-letter{
+    text-transform:uppercase;
+}
+
+.fecha input{
+    height:36px;
+    padding:0 10px;
+    border:1px solid var(--borde);
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* Cinco tarjetas del mismo tamaño */
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:20px;
+}
+
+.tarjeta{
+    min-height:190px;
+    padding:24px 16px;
+    border-radius:18px;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    text-align:center;
+    box-shadow:0 5px 18px rgba(15,23,42,.12);
+    transition:transform .2s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-4px);
+}
+
+.tarjeta i{
+    font-size:36px;
+}
+
+.tarjeta h3{
+    font-size:16px;
+    font-weight:600;
+}
+
+.tarjeta h2{
+    font-size:38px;
+    line-height:1;
+}
+
+.azul{ background:#2563eb; }
+.verde{ background:#16a34a; }
+.roja{ background:#dc2626; }
+.morada{ background:#7c3aed; }
+.naranja{ background:#ea580c; }
+
+@media (max-width:1200px){
+    .tarjetas{
+        grid-template-columns:repeat(3, 1fr);
+    }
+}
+
+@media (max-width:900px){
+    .fecha{
+        flex-wrap:wrap;
+        white-space:normal;
+    }
+
+    .tarjetas{
+        grid-template-columns:repeat(2, 1fr);
+    }
+}
+
+@media (max-width:520px){
+    .tarjetas{
+        grid-template-columns:1fr;
+    }
+}

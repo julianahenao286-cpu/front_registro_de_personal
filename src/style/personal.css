@@ -1,0 +1,7 @@
+/* Gestión de Personal: el layout, la tabla y el modal están en base.css */
+
+/* La columna de acciones no se estira: los botones quedan centrados bajo su título */
+td:last-child:has(button){
+    width:120px;
+    white-space:nowrap;
+}

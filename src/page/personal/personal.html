@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Personal | Registro Montessori</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../../style/base.css">
+    <link rel="stylesheet" href="../../style/personal.css">
+</head>
+
+<!-- hidden hasta validar la sesión (lo quita js/layout.js) -->
+<body hidden>
+
+<div class="contenedor">
+
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Registro<br>Montessori</h2>
+            <img src="../../public/image/escudo.png" alt="Escudo Institución Educativa María Montessori" class="escudo">
+        </div>
+
+        <ul class="menu">
+            <li class="active" aria-current="page">
+                <i class="fas fa-users" aria-hidden="true"></i>
+                <span>Personal</span>
+            </li>
+            <li data-ventana="movimientos">
+                <i class="fas fa-right-to-bracket" aria-hidden="true"></i>
+                <span>Entrada / Salida</span>
+            </li>
+            <li data-ventana="historial">
+                <i class="fas fa-clock-rotate-left" aria-hidden="true"></i>
+                <span>Historial</span>
+            </li>
+            <li data-ventana="reportes">
+                <i class="fas fa-chart-column" aria-hidden="true"></i>
+                <span>Reportes</span>
+            </li>
+            <li data-ventana="usuarios" data-solo-admin hidden>
+                <i class="fas fa-user-shield" aria-hidden="true"></i>
+                <span>Usuarios</span>
+            </li>
+        </ul>
+
+        <button type="button" class="btn-cerrar" aria-label="Cerrar sesión">
+            <i class="fas fa-right-from-bracket" aria-hidden="true"></i>
+            <span>Cerrar Sesión</span>
+        </button>
+    </aside>
+
+    <main class="principal">
+
+        <header class="encabezado">
+            <div>
+                <h1>Gestión de Personal</h1>
+                <p>Consulta y administra el personal de la institución.</p>
+            </div>
+        </header>
+
+        <div class="barra-superior">
+            <input type="search" id="buscar" placeholder="Buscar por nombre o documento..." aria-label="Buscar empleado">
+
+            <button type="button" id="boton_agregar" class="btn-primario" hidden>
+                <i class="fas fa-user-plus" aria-hidden="true"></i>
+                Agregar Personal
+            </button>
+        </div>
+
+        <div class="tabla-contenedor">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Documento</th>
+                        <th>Cargo</th>
+                        <th>Área</th>
+                        <th id="columna-acciones" hidden>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaPersonal"></tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <div class="modal" id="modal">
+        <form class="modal-contenido" id="form-personal" novalidate>
+            <h2 id="titulo-modal">Registrar Personal</h2>
+            <p>Ingresa los datos del empleado</p>
+
+            <div class="campo">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingresa el nombre" maxlength="120" required>
+            </div>
+
+            <div class="campo">
+                <label for="documento">Documento</label>
+                <input type="text" id="documento" name="documento" placeholder="Ingresa el documento" maxlength="20" required>
+            </div>
+
+            <div class="campo">
+                <label for="cargo">Cargo</label>
+                <select id="cargo" name="cargo" required>
+                    <option value="">Selecciona un cargo</option>
+                    <option value="Directivo">Directivo</option>
+                    <option value="Docente">Docente</option>
+                    <option value="Administrativo">Administrativo</option>
+                    <option value="Vigilante">Vigilante</option>
+                    <option value="Servicios Generales">Servicios Generales</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="area">Área (opcional)</label>
+                <input type="text" id="area" name="area" placeholder="Ej: Primaria, Rectoría" maxlength="120">
+            </div>
+
+            <div class="botones">
+                <button type="button" class="btn-cancelar" id="btn-cancelar">Cancelar</button>
+                <button type="submit" class="btn-guardar" id="btn-guardar">
+                    <i class="fas fa-floppy-disk" aria-hidden="true"></i>
+                    <span id="texto-guardar">Registrar</span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<script type="module" src="personal.js"></script>
+</body>
+</html>

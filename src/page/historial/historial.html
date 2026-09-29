@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Registros | Registro Montessori</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../../style/base.css">
+    <link rel="stylesheet" href="../../style/historial.css">
+</head>
+
+<!-- hidden hasta validar la sesión (lo quita js/layout.js) -->
+<body hidden>
+
+<div class="contenedor">
+
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Registro<br>Montessori</h2>
+            <img src="../../public/image/escudo.png" alt="Escudo Institución Educativa María Montessori" class="escudo">
+        </div>
+
+        <ul class="menu">
+            <li data-ventana="personal">
+                <i class="fas fa-users" aria-hidden="true"></i>
+                <span>Personal</span>
+            </li>
+            <li data-ventana="movimientos">
+                <i class="fas fa-right-to-bracket" aria-hidden="true"></i>
+                <span>Entrada / Salida</span>
+            </li>
+            <li class="active" aria-current="page">
+                <i class="fas fa-clock-rotate-left" aria-hidden="true"></i>
+                <span>Historial</span>
+            </li>
+            <li data-ventana="reportes">
+                <i class="fas fa-chart-column" aria-hidden="true"></i>
+                <span>Reportes</span>
+            </li>
+            <li data-ventana="usuarios" data-solo-admin hidden>
+                <i class="fas fa-user-shield" aria-hidden="true"></i>
+                <span>Usuarios</span>
+            </li>
+        </ul>
+
+        <button type="button" class="btn-cerrar" aria-label="Cerrar sesión">
+            <i class="fas fa-right-from-bracket" aria-hidden="true"></i>
+            <span>Cerrar Sesión</span>
+        </button>
+    </aside>
+
+    <main class="principal">
+
+        <header class="encabezado">
+            <div>
+                <h1>Historial de Entradas y Salidas</h1>
+                <p>Consulta los registros realizados por el personal.</p>
+            </div>
+        </header>
+
+        <form class="filtros tarjeta-blanca" id="form-filtros">
+            <div class="campo">
+                <label for="fechaInicio">Fecha inicio</label>
+                <input type="date" id="fechaInicio" name="desde">
+            </div>
+
+            <div class="campo">
+                <label for="fechaFin">Fecha fin</label>
+                <input type="date" id="fechaFin" name="hasta">
+            </div>
+
+            <div class="campo">
+                <label for="cargo">Cargo</label>
+                <select id="cargo" name="cargo">
+                    <option value="">Todos</option>
+                    <option value="Directivo">Directivos</option>
+                    <option value="Docente">Docentes</option>
+                    <option value="Administrativo">Administrativos</option>
+                    <option value="Vigilante">Vigilantes</option>
+                    <option value="Servicios Generales">Servicios Generales</option>
+                </select>
+            </div>
+
+            <button type="submit" id="btn-buscar" class="btn-primario">
+                <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+                Buscar
+            </button>
+        </form>
+
+        <div class="tabla-contenedor">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Nombre</th>
+                        <th>Cargo</th>
+                        <th>Hora Entrada</th>
+                        <th>Hora Salida</th>
+                        <th>Estado</th>
+                        <th id="columna-acciones" hidden>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaHistorial"></tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <div class="modal" id="modal">
+        <form class="modal-contenido" id="form-jornada" novalidate>
+            <h2>Corregir jornada</h2>
+            <p id="detalle-jornada"></p>
+
+            <div class="campo">
+                <label for="horaEntrada">Hora de entrada</label>
+                <input type="time" id="horaEntrada" name="entrada" required>
+            </div>
+
+            <div class="campo">
+                <label for="horaSalida">Hora de salida</label>
+                <input type="time" id="horaSalida" name="salida">
+                <p class="ayuda">Déjala vacía si la persona aún no ha salido.</p>
+            </div>
+
+            <div class="botones">
+                <button type="button" class="btn-eliminar" id="btn-eliminar">
+                    <i class="fas fa-trash" aria-hidden="true"></i>
+                    Eliminar
+                </button>
+                <button type="button" class="btn-cancelar" id="btn-cancelar">Cancelar</button>
+                <button type="submit" class="btn-guardar" id="btn-guardar">Guardar</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<script type="module" src="historial.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+    // Puerto fijo: debe coincidir con CORS_ORIGIN del backend
+    "liveServer.settings.port": 5500,
+    // Evita que la página se recargue sola cuando el backend escribe en dev.db
+    "liveServer.settings.ignoreFiles": [
+        "**/express-main-grupo_yori/**",
+        "**/*.db",
+        "**/*.db-journal",
+        "**/node_modules/**"
+    ]
+}

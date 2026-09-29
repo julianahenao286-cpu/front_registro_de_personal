@@ -1,0 +1,682 @@
+/* Estilos compartidos por las ventanas privadas: layout, menú lateral, tablas,
+   formularios, botones, modales de formulario, diálogos y notificaciones.
+   Cada ventana carga este archivo y luego su CSS propio. */
+
+:root{
+    --azul-oscuro:#0B1F4D;
+    --azul-menu:#1f4bb5;
+    --azul:#2563eb;
+    --azul-hover:#1d4ed8;
+    --verde:#16a34a;
+    --verde-hover:#15803d;
+    --rojo:#dc2626;
+    --rojo-hover:#b91c1c;
+    --amarillo:#f59e0b;
+
+    --fondo:#f4f7fc;
+    --superficie:#ffffff;
+    --texto:#1f2937;
+    --texto-suave:#6b7280;
+    --borde:#d9dfe8;
+
+    --radio:12px;
+    --radio-grande:16px;
+    --sombra:0 2px 10px rgba(15,23,42,.08);
+    --sombra-modal:0 20px 50px rgba(15,23,42,.25);
+
+    --sidebar-ancho:260px;
+    --contenido-max:1200px;
+    --control-alto:44px;
+}
+
+/* El atributo hidden siempre oculta, aunque otra regla defina display */
+[hidden]{
+    display:none !important;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body{
+    background:var(--fondo);
+    color:var(--texto);
+}
+
+button, input, select{
+    font:inherit;
+    color:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+button:disabled{
+    cursor:not-allowed;
+}
+
+/* ---------- Menú lateral ---------- */
+
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    width:var(--sidebar-ancho);
+    background:var(--azul-oscuro);
+    padding:24px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    overflow-y:auto;
+    z-index:100;
+}
+
+.logo{
+    text-align:center;
+}
+
+.logo h2{
+    color:white;
+    font-size:22px;
+    line-height:1.3;
+    margin-bottom:16px;
+}
+
+.escudo{
+    width:120px;
+    height:120px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto;
+}
+
+.menu{
+    list-style:none;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.menu li{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:13px 16px;
+    border-radius:var(--radio);
+    color:white;
+    cursor:pointer;
+    transition:background .2s, transform .2s;
+}
+
+.menu li i{
+    width:20px;
+    font-size:17px;
+    text-align:center;
+}
+
+.menu li:hover{
+    background:var(--azul-menu);
+    transform:translateX(4px);
+}
+
+.menu li.active,
+.menu li.active:hover{
+    background:white;
+    color:var(--azul-oscuro);
+    font-weight:600;
+    transform:none;
+    cursor:default;
+}
+
+.btn-cerrar{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    padding:13px;
+    border:none;
+    border-radius:var(--radio);
+    background:#ef4444;
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    transition:background .2s;
+}
+
+.btn-cerrar:hover{
+    background:var(--rojo);
+}
+
+/* ---------- Contenido principal ---------- */
+
+.principal{
+    margin-left:var(--sidebar-ancho);
+    min-height:100vh;
+    padding:32px;
+}
+
+/* Todas las secciones comparten el mismo ancho máximo y quedan centradas */
+.principal > *{
+    width:100%;
+    max-width:var(--contenido-max);
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.encabezado{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    margin-bottom:28px;
+}
+
+.encabezado h1{
+    color:var(--azul-oscuro);
+    font-size:28px;
+    margin-bottom:6px;
+}
+
+.encabezado p{
+    color:var(--texto-suave);
+}
+
+.tarjeta-blanca{
+    background:var(--superficie);
+    border-radius:var(--radio-grande);
+    box-shadow:var(--sombra);
+    padding:24px;
+}
+
+/* ---------- Barra de búsqueda + botón ---------- */
+
+.barra-superior{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    margin-bottom:20px;
+}
+
+.barra-superior input{
+    width:340px;
+    max-width:100%;
+    height:var(--control-alto);
+    padding:0 14px;
+    border:1px solid var(--borde);
+    border-radius:var(--radio);
+    background:var(--superficie);
+}
+
+/* ---------- Botones ---------- */
+
+.btn-primario,
+.btn-guardar,
+.btn-cancelar,
+.btn-eliminar{
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    height:var(--control-alto);
+    padding:0 20px;
+    border:1px solid transparent;
+    border-radius:var(--radio);
+    font-size:15px;
+    font-weight:600;
+    white-space:nowrap;
+    transition:background .2s, border-color .2s;
+}
+
+.btn-primario{
+    background:var(--azul);
+    color:white;
+}
+
+.btn-primario:hover{
+    background:var(--azul-hover);
+}
+
+.btn-guardar{
+    background:var(--verde);
+    color:white;
+}
+
+.btn-guardar:hover{
+    background:var(--verde-hover);
+}
+
+.btn-cancelar{
+    background:var(--superficie);
+    border-color:var(--borde);
+    color:var(--texto);
+}
+
+.btn-cancelar:hover{
+    background:#f3f4f6;
+}
+
+.btn-eliminar{
+    background:var(--rojo);
+    color:white;
+}
+
+.btn-eliminar:hover{
+    background:var(--rojo-hover);
+}
+
+.btn-primario:disabled,
+.btn-guardar:disabled,
+.btn-cancelar:disabled,
+.btn-eliminar:disabled{
+    opacity:.6;
+}
+
+/* ---------- Tablas ---------- */
+
+.tabla-contenedor{
+    background:var(--superficie);
+    border-radius:var(--radio-grande);
+    box-shadow:var(--sombra);
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:var(--azul-oscuro);
+    color:white;
+    font-weight:600;
+    white-space:nowrap;
+}
+
+th, td{
+    padding:14px 16px;
+    text-align:center;
+    vertical-align:middle;
+}
+
+td{
+    border-bottom:1px solid #eef1f6;
+}
+
+tbody tr:last-child td{
+    border-bottom:none;
+}
+
+tbody tr:hover{
+    background:#f8fafd;
+}
+
+td.fila-vacia{
+    padding:36px 16px;
+    color:var(--texto-suave);
+}
+
+/* Botones de acción de cada fila (solo icono) */
+td button{
+    width:36px;
+    height:36px;
+    margin:0 3px;
+    border:none;
+    border-radius:10px;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    transition:filter .2s;
+}
+
+td button:hover:not(:disabled){
+    filter:brightness(.92);
+}
+
+td button:disabled{
+    opacity:.4;
+}
+
+.editar{
+    background:#fde68a;
+    color:#92400e;
+}
+
+.eliminar{
+    background:#fecaca;
+    color:#991b1b;
+}
+
+/* ---------- Formularios ---------- */
+
+.campo{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.campo label{
+    font-weight:600;
+    font-size:14px;
+    color:#374151;
+}
+
+.campo input,
+.campo select{
+    width:100%;
+    height:var(--control-alto);
+    padding:0 12px;
+    border:1px solid var(--borde);
+    border-radius:10px;
+    background:var(--superficie);
+    font-size:15px;
+}
+
+.campo input:focus,
+.campo select:focus,
+.barra-superior input:focus{
+    outline:none;
+    border-color:var(--azul);
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+
+.ayuda{
+    font-size:13px;
+    color:var(--texto-suave);
+}
+
+/* ---------- Modal de formulario (crear / editar) ---------- */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    padding:16px;
+    background:rgba(15,23,42,.5);
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+    animation:aparecer .15s ease-out;
+}
+
+.modal-contenido{
+    width:100%;
+    max-width:440px;
+    max-height:calc(100vh - 32px);
+    overflow-y:auto;
+    background:var(--superficie);
+    border-radius:var(--radio-grande);
+    box-shadow:var(--sombra-modal);
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    animation:subir .2s ease-out;
+}
+
+.modal-contenido h2{
+    color:var(--azul-oscuro);
+    text-align:center;
+}
+
+.modal-contenido > p{
+    color:var(--texto-suave);
+    text-align:center;
+    margin-top:-10px;
+    margin-bottom:4px;
+}
+
+.botones{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:8px;
+}
+
+/* ---------- Diálogos (errores, avisos y confirmaciones) ---------- */
+
+.dialogo{
+    position:fixed;
+    inset:0;
+    padding:16px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(15,23,42,.55);
+    z-index:2000;
+    animation:aparecer .15s ease-out;
+}
+
+.dialogo-caja{
+    width:100%;
+    max-width:420px;
+    max-height:calc(100vh - 32px);
+    overflow-y:auto;
+    background:var(--superficie);
+    border-radius:var(--radio-grande);
+    box-shadow:var(--sombra-modal);
+    padding:32px 28px 24px;
+    text-align:center;
+    animation:subir .2s ease-out;
+}
+
+.dialogo-icono{
+    width:64px;
+    height:64px;
+    margin:0 auto 18px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+}
+
+.dialogo-error .dialogo-icono{ background:#fee2e2; color:var(--rojo); }
+.dialogo-advertencia .dialogo-icono{ background:#fef3c7; color:#d97706; }
+.dialogo-exito .dialogo-icono{ background:#dcfce7; color:var(--verde); }
+.dialogo-info .dialogo-icono{ background:#dbeafe; color:var(--azul); }
+.dialogo-peligro .dialogo-icono{ background:#fee2e2; color:var(--rojo); }
+
+.dialogo-caja h2{
+    font-size:20px;
+    color:var(--azul-oscuro);
+    margin-bottom:8px;
+}
+
+.dialogo-caja > p{
+    color:var(--texto-suave);
+    line-height:1.5;
+    white-space:pre-line;
+}
+
+.dialogo-opciones{
+    list-style:none;
+    margin-top:18px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    text-align:left;
+}
+
+.dialogo-opciones button{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    padding:12px 14px;
+    border:1px solid var(--borde);
+    border-radius:var(--radio);
+    background:var(--superficie);
+    text-align:left;
+    transition:border-color .2s, background .2s;
+}
+
+.dialogo-opciones button:hover,
+.dialogo-opciones button:focus-visible{
+    border-color:var(--azul);
+    background:#eff6ff;
+    outline:none;
+}
+
+.dialogo-opciones small{
+    color:var(--texto-suave);
+}
+
+.dialogo-botones{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:24px;
+}
+
+.dialogo-botones button{
+    min-width:130px;
+}
+
+/* ---------- Notificaciones breves (toasts) ---------- */
+
+.toasts{
+    position:fixed;
+    top:20px;
+    right:20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    z-index:3000;
+    pointer-events:none;
+}
+
+.toast{
+    width:340px;
+    max-width:calc(100vw - 40px);
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 16px;
+    background:var(--superficie);
+    border-left:5px solid var(--verde);
+    border-radius:var(--radio);
+    box-shadow:0 10px 30px rgba(15,23,42,.18);
+    pointer-events:auto;
+    animation:entrar-derecha .25s ease-out;
+}
+
+.toast i{
+    font-size:20px;
+    color:var(--verde);
+}
+
+.toast-info{ border-left-color:var(--azul); }
+.toast-info i{ color:var(--azul); }
+
+.toast.saliendo{
+    opacity:0;
+    transform:translateX(20px);
+    transition:opacity .25s, transform .25s;
+}
+
+@keyframes aparecer{
+    from{ opacity:0; }
+}
+
+@keyframes subir{
+    from{ opacity:0; transform:translateY(12px) scale(.98); }
+}
+
+@keyframes entrar-derecha{
+    from{ opacity:0; transform:translateX(30px); }
+}
+
+/* Visible solo para lectores de pantalla */
+.solo-lectores{
+    position:absolute;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    clip:rect(0 0 0 0);
+    white-space:nowrap;
+}
+
+/* ---------- Pantallas pequeñas: el menú pasa a una barra superior ---------- */
+
+@media (max-width:900px){
+    .sidebar{
+        position:sticky;
+        width:100%;
+        height:auto;
+        bottom:auto;
+        flex-direction:row;
+        align-items:center;
+        gap:12px;
+        padding:10px 16px;
+        overflow:visible;
+    }
+
+    .logo{
+        display:none;
+    }
+
+    .menu{
+        flex-direction:row;
+        gap:4px;
+        min-width:0;
+        overflow-x:auto;
+    }
+
+    .menu li{
+        padding:10px 12px;
+    }
+
+    .menu li span{
+        display:none;
+    }
+
+    .menu li:hover{
+        transform:none;
+    }
+
+    .btn-cerrar{
+        width:auto;
+        flex-shrink:0;
+        padding:10px 14px;
+    }
+
+    .btn-cerrar span{
+        display:none;
+    }
+
+    .principal{
+        margin-left:0;
+        padding:24px 16px;
+    }
+
+    .encabezado{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .barra-superior{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .barra-superior input{
+        width:100%;
+    }
+
+    .dialogo-botones{
+        flex-direction:column-reverse;
+    }
+
+    .dialogo-botones button{
+        width:100%;
+    }
+}

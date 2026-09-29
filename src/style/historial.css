@@ -1,0 +1,55 @@
+/* Historial: el layout, la tabla y el modal están en base.css */
+
+/* Filtros: tres campos del mismo ancho y el botón alineado con los inputs */
+.filtros{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr) auto;
+    gap:16px;
+    align-items:end;
+    margin-bottom:24px;
+}
+
+td:last-child:has(button){
+    width:100px;
+}
+
+.completo,
+.curso{
+    display:inline-block;
+    min-width:96px;
+    padding:5px 12px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.completo{
+    background:#dcfce7;
+    color:#15803d;
+}
+
+.curso{
+    background:#fef3c7;
+    color:#b45309;
+}
+
+/* Modal de corrección: Eliminar a la izquierda, Cancelar y Guardar a la derecha */
+.botones .btn-eliminar{
+    margin-right:auto;
+}
+
+@media (max-width:900px){
+    .filtros{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .filtros .btn-primario{
+        grid-column:1 / -1;
+    }
+}
+
+@media (max-width:520px){
+    .filtros{
+        grid-template-columns:1fr;
+    }
+}

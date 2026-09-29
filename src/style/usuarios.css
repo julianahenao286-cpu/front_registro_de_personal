@@ -1,0 +1,13 @@
+/* Usuarios: el layout, la tabla y el modal están en base.css */
+
+td:last-child:has(button){
+    width:120px;
+    white-space:nowrap;
+}
+
+td .etiqueta-tu{
+    font-size:12px;
+    font-weight:600;
+    color:var(--azul);
+    margin-left:6px;
+}

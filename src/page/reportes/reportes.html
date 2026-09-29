@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes | Registro Montessori</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../../style/base.css">
+    <link rel="stylesheet" href="../../style/reportes.css">
+</head>
+
+<!-- hidden hasta validar la sesión (lo quita js/layout.js) -->
+<body hidden>
+
+<div class="contenedor">
+
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Registro<br>Montessori</h2>
+            <img src="../../public/image/escudo.png" alt="Escudo Institución Educativa María Montessori" class="escudo">
+        </div>
+
+        <ul class="menu">
+            <li data-ventana="personal">
+                <i class="fas fa-users" aria-hidden="true"></i>
+                <span>Personal</span>
+            </li>
+            <li data-ventana="movimientos">
+                <i class="fas fa-right-to-bracket" aria-hidden="true"></i>
+                <span>Entrada / Salida</span>
+            </li>
+            <li data-ventana="historial">
+                <i class="fas fa-clock-rotate-left" aria-hidden="true"></i>
+                <span>Historial</span>
+            </li>
+            <li class="active" aria-current="page">
+                <i class="fas fa-chart-column" aria-hidden="true"></i>
+                <span>Reportes</span>
+            </li>
+            <li data-ventana="usuarios" data-solo-admin hidden>
+                <i class="fas fa-user-shield" aria-hidden="true"></i>
+                <span>Usuarios</span>
+            </li>
+        </ul>
+
+        <button type="button" class="btn-cerrar" aria-label="Cerrar sesión">
+            <i class="fas fa-right-from-bracket" aria-hidden="true"></i>
+            <span>Cerrar Sesión</span>
+        </button>
+    </aside>
+
+    <main class="principal">
+
+        <header class="encabezado">
+            <div>
+                <h1>Reportes del Sistema</h1>
+                <p>Consulta las estadísticas generales del personal y los registros realizados.</p>
+            </div>
+
+            <div class="fecha">
+                <i class="fas fa-calendar-days" aria-hidden="true"></i>
+                <span id="fechaActual"></span>
+                <label for="fechaReporte" class="solo-lectores">Fecha del reporte</label>
+                <input type="date" id="fechaReporte">
+            </div>
+        </header>
+
+        <section class="tarjetas">
+            <div class="tarjeta azul">
+                <i class="fas fa-users" aria-hidden="true"></i>
+                <h3>Total Personal</h3>
+                <h2 id="totalPersonal">0</h2>
+            </div>
+
+            <div class="tarjeta verde">
+                <i class="fas fa-right-to-bracket" aria-hidden="true"></i>
+                <h3 id="etiquetaEntradas">Entradas Hoy</h3>
+                <h2 id="totalEntradas">0</h2>
+            </div>
+
+            <div class="tarjeta roja">
+                <i class="fas fa-right-from-bracket" aria-hidden="true"></i>
+                <h3 id="etiquetaSalidas">Salidas Hoy</h3>
+                <h2 id="totalSalidas">0</h2>
+            </div>
+
+            <div class="tarjeta morada">
+                <i class="fas fa-user-check" aria-hidden="true"></i>
+                <h3 id="etiquetaPresentes">Presentes</h3>
+                <h2 id="presentes">0</h2>
+            </div>
+
+            <div class="tarjeta naranja">
+                <i class="fas fa-user-xmark" aria-hidden="true"></i>
+                <h3>Ausentes</h3>
+                <h2 id="ausentes">0</h2>
+            </div>
+        </section>
+
+    </main>
+
+</div>
+
+<script type="module" src="reportes.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+/* El atributo hidden siempre oculta, aunque otra regla defina display */
+[hidden]{
+    display:none !important;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+button, input{
+    font:inherit;
+}
+
+/* La tarjeta queda centrada vertical y horizontalmente */
+.pagina{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:24px 16px;
+    background:linear-gradient(135deg, #0B1F4D 0%, #1f4bb5 100%);
+}
+
+.caja{
+    width:100%;
+    max-width:420px;
+    padding:36px 32px;
+    background:white;
+    border-radius:18px;
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.logo2{
+    width:110px;
+    height:110px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto;
+}
+
+.textos{
+    text-align:center;
+    margin-bottom:6px;
+}
+
+.textos h1{
+    font-size:24px;
+    color:#0B1F4D;
+    margin-bottom:6px;
+}
+
+.textos p{
+    font-size:14px;
+    color:#6b7280;
+}
+
+.campo{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+label{
+    font-size:14px;
+    font-weight:600;
+    color:#374151;
+}
+
+input{
+    width:100%;
+    height:46px;
+    padding:0 14px;
+    border:1px solid #d9dfe8;
+    border-radius:10px;
+    font-size:15px;
+}
+
+input:focus{
+    outline:none;
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+
+.boton{
+    width:100%;
+    height:48px;
+    margin-top:4px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:background .2s;
+}
+
+.boton:hover{
+    background:#1d4ed8;
+}
+
+.boton:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+/* Error de inicio de sesión dentro de la tarjeta */
+.mensaje-error{
+    padding:10px 14px;
+    border:1px solid #fecaca;
+    border-left:4px solid #dc2626;
+    border-radius:8px;
+    background:#fef2f2;
+    color:#b91c1c;
+    font-size:14px;
+}
